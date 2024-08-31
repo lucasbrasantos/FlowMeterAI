@@ -1,7 +1,51 @@
 # FlowMeterAI
 - FlowMeterAI - is an AI-powered application that automates the reading of water and gas consumption meters through image analysis, providing real-time data processing and accurate measurements.
 
-## Endpoints
+## Usage
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- Docker
+
+### Setup
+
+1. **Clone the Repository**
+
+   ```sh
+   git clone https://github.com/yourusername/FlowMeterAI.git
+   cd FlowMeterAI
+   ```
+
+2. **Build and Start the Containers**
+
+   Build and start the Docker containers using Docker Compose:
+
+   ```sh
+   docker-compose up --build
+   ```
+
+   This command will build the Docker images for the Node.js application and PostgreSQL database, then start the containers.
+
+
+### Stopping the Application
+
+To stop the Docker containers, use the following command:
+
+```sh
+docker-compose down
+```
+
+This will stop and remove the containers, but the database data will persist.
+
+### Additional Notes
+
+- Ensure Docker and Docker Compose are up-to-date to avoid compatibility issues.
+- Adjust environment variables and configuration in `docker-compose.yml` and `.env` files as needed for different environments.
+   
+
+## API Endpoints
 
 ### 1. **POST /upload**
 
