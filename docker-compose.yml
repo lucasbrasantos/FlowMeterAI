@@ -9,15 +9,15 @@ services:
     volumes:
       - .:/usr/src/flowmeterai-app    
     environment:
-      - NODE_PORT=${NODE_PORT}
+      - NODE_PORT=80
       - GEMINI_API_KEY=${GEMINI_API_KEY}
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
+      - DB_NAME=flowmeterai
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=postgres
+      - DB_PORT=5432
     ports:
-      - ${NODE_PORT}:80
+      - 80:80
     depends_on:
       - postgres
 
@@ -25,9 +25,9 @@ services:
     image: postgres
     container_name: flowmeterai-postgres    
     environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_DB=flowmeterai
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     ports:
       - 5432:5432
     volumes:
