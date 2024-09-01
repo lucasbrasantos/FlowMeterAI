@@ -14,7 +14,7 @@ Ensure you have the following installed:
 1. **Clone the Repository**
 
    ```sh
-   git clone https://github.com/yourusername/FlowMeterAI.git
+   https://github.com/lucasbrasantos/FlowMeterAI.git
    cd FlowMeterAI
    ```
 
