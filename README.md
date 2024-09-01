@@ -95,6 +95,65 @@ Confirms or updates the measurement value for a given reading.
   - **500 Internal Server Error**: If the update or confirmation fails.
 
 
+
+### Example Requests
+
+#### 1. **Upload Measure**
+   - **Endpoint**: `POST /upload`
+
+   - **Body**:
+   ```json
+     {    
+        "image": "Path to the image file (e.g., /path/to/image.jpg)",
+        "customer_code": 1234,
+        "measure_datetime": "30/08/2024",
+        "measure_type": "gas"
+      }
+   ```
+
+   - **Example Response**:
+     ```json
+     {
+       "measure_uuid": "13f3678a-7435-4c24-acf3-23e23e548369",
+       "recognized_value": 1234,
+       "temporary_link": "http://example.com/temp/13f3678a.jpg"
+     }
+     ```
+
+#### 2. **Update Measure**
+   - **Endpoint**: `PATCH /confirm`
+   - **Body**:
+     ```json
+     {
+       "measure_uuid": "13f3678a-7435-4c24-acf3-23e23e548369",
+       "confirmed_value": 123123
+     }
+     ```
+   - **Example Response**:
+     ```json
+     {
+       "status": "success",
+     }
+     ```
+
+#### 3. **Get Measures by Customer Code**
+   - **Endpoint**: `GET /<customer_code>/list`
+   - **Query Parameters**:
+     - `measure_type`: `gas`
+     - `measure_type`: `water`
+   - **Example Response**:
+     ```json
+     [
+       {
+         "measure_uuid": "13f3678a-7435-4c24-acf3-23e23e548369",
+         "value": 1234,
+         "datetime": "2024-08-30T14:30:00",
+         "measure_type": "gas"
+       }
+     ]
+     ```
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
