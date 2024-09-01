@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "5ed59516-880a-4847-abf8-d1041d9bc09c",
+		"name": "FlowMeterAI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30032511"
+	},
+	"item": [
+		{
+			"name": "_endpoints_",
+			"item": [
+				{
+					"name": "uploadMeasure",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"_timestamp\", new Date().getDate())"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Lucas Braga Santos/Downloads/gas1.webp"
+								},
+								{
+									"key": "customer_code",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "measure_datetime",
+									"value": "30/08/2024",
+									"type": "text"
+								},
+								{
+									"key": "measure_type",
+									"value": "gas",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/upload",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMeasure",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"measure_uuid\": \"13f3678a-7435-4c24-acf3-23e23e548369\",\r\n    \"confirmed_value\": 123123\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/confirm",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMeasureByCustomerCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/1234/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"1234",
+								"list"
+							],
+							"query": [
+								{
+									"key": "measure_type",
+									"value": "water",
+									"disabled": true
+								},
+								{
+									"key": "measure_type",
+									"value": "gas",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
